@@ -204,7 +204,28 @@ class TicTacToeInterfaceController: WKInterfaceController {
          }
     }
     
+    /* APP LIFECYCLE
+     0) Initial event after installation: AWAKEWITHCONTEXT
+     1) Event prior to opening the app: WILLACTIVATE
+     2) Close the app: DIDDEACTIVATE
+     3) App visible in favourites scroller: WILLACTIVATE
+     4) Launch other app from favourites scroller: DIDDEACTIVATE
+     5) Change data in iPhone app (Watch app not visible): WATCHOS RECEIVED APP CONTEXT
+     6) Register changed application context: APPLICATIONCONTEXTCHANGEDONWATCH
+     7) Open app on watch again: WILLACTIVATE
+     
+     Lifecycle for data:
+     0) Awake with Context -> Data could have been updated on either side last. Exchange both ways and both sides discard oldest.
+        a) OpponentStrong: Master data on phone (always).
+        b) Win counts: written on both
+     1) OpponentStrong changed -> what happens if the watch is not close by?
+     2) Count Data changed -> ditto
+     
+     
+    */
+    
     @objc func applicationContextChangedOnWatch() {
+        //NSLog("APPLICATIONCONTEXTCHANGEDONWATCH")
         OperationQueue.main.addOperation( {
             if self.isWatchUIActive {
                 self.recolorButtonsUponOpponentStrengthChange() 
@@ -214,20 +235,43 @@ class TicTacToeInterfaceController: WKInterfaceController {
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-        // Configure interface objects here.
-        if let _ = defaults.string(forKey:"opponentStrong") {
-        }
-        else {
-            defaults.set(true, forKey: "opponentStrong")
-        }
+        //NSLog("AWAKEWITHCONTEXT")
+        
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(applicationContextChangedOnWatch),
                                                name: Notification.Name("ApplicationContextChangedOnWatch"),
                                                object: nil)
+        
+        defaults.set(0, forKey: "playerWinCount")
+        defaults.set(0, forKey: "watchWinCount")
+        defaults.set(0, forKey: "drawCount")
+        
+        do {
+            try WCSession.default.updateApplicationContext(["playerWinCount": 0])
+            try WCSession.default.updateApplicationContext(["watchWinCount": 0])
+            try WCSession.default.updateApplicationContext(["drawCount": 0])
+        }
+        catch let error {
+            NSLog("Error updating scores on iPhone: \(error).")
+        }
+        
+         /*
+         WCSession.default.sendMessage(["request" : "getOpponentStrongFlag"],
+         replyHandler: {(response: [String : Any]) -> Void in // layout  ["opponentStrong": true|false]
+            self.defaults.set(response["opponentStrong"], forKey: "opponentStrong")
+            let res = self.defaults.bool(forKey: "opponentStrong")
+            NSLog("AWAKE - OPPONENTSTRONG FLAG :: \(res)")
+         },
+         errorHandler: {(error: Error) -> Void in
+            self.defaults.set(false, forKey: "opponentStrong")
+            NSLog("AWAKE - OPPONENTSTRONG FLAG :: \(error)")
+         })
+         */
     }
     
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
+        // NSLog("WILLACTIVATE")
         super.willActivate()
         let opponentStrong = defaults.bool(forKey:"opponentStrong")
         
@@ -254,6 +298,7 @@ class TicTacToeInterfaceController: WKInterfaceController {
     
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
+        //NSLog("DIDDEACTIVATE")
         super.didDeactivate()
         self.isWatchUIActive = false
     }

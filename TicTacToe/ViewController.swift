@@ -19,10 +19,19 @@ class ViewController: UIViewController {
     
     let defaults = UserDefaults.init()
     
+    func setDefaultsUpdateApplicationContext(val: Bool) {
+        defaults.set(val, forKey: "opponentStrong")
+        do {
+            try WCSession.default.updateApplicationContext(["opponentStrong": val])
+        }
+        catch let error {
+            NSLog("Error updating opponentStrong flag on watch: \(error).")
+        }
+    }
+    
    
     @objc func applicationContextChanged() {
         OperationQueue.main.addOperation( {
-            //NSLog("ApplicationContextChanged")
             self.playerWinCount.text = String(self.defaults.integer(forKey: "playerWinCount"))
             self.watchWinCount.text = String(self.defaults.integer(forKey: "watchWinCount"))
             self.drawCount.text = String(self.defaults.integer(forKey: "drawCount"))
@@ -33,7 +42,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         opponentStrongSwitch.addTarget(self, action: #selector(switchChanged), for: UIControlEvents.valueChanged)
         opponentStrongSwitch.setOn(true, animated: true)
-        defaults.set(true, forKey: "opponentStrong")
+        setDefaultsUpdateApplicationContext(val: true)
         
         playerWinCount.text = String(defaults.integer(forKey: "playerWinCount"))
         watchWinCount.text = String(defaults.integer(forKey: "watchWinCount"))
@@ -50,22 +59,10 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+
+    
     @objc func switchChanged(aSwitch: UISwitch) {
-        var val: Bool
-        if aSwitch.isOn {
-            defaults.set(true, forKey: "opponentStrong")
-            val = true
-        }
-        else {
-            defaults.set(false, forKey: "opponentStrong")
-            val = false
-        }
-        do {
-            try WCSession.default.updateApplicationContext(["opponentStrong": val])
-        }
-        catch let error {
-            NSLog("Error updating opponentStrong flag on watch: \(error).")
-        }
+        setDefaultsUpdateApplicationContext(val: aSwitch.isOn)
     }
     
     func getOpponentStrong() -> Bool {

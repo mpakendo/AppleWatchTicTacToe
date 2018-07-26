@@ -37,6 +37,16 @@ class SessionDelegate: NSObject, WCSessionDelegate {
         }
     }
     
+    
+    
+    public func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
+        let request = message["request"] as? String
+        let defaults = UserDefaults.init()
+        if request == "getOpponentStrongFlag" {
+            replyHandler(["opponentStrong": defaults.bool(forKey: "opponentStrong")])
+        }
+    }
+    
     #endif
     
     func session(_ session: WCSession, activationDidCompleteWith: WCSessionActivationState, error: Error?) {
