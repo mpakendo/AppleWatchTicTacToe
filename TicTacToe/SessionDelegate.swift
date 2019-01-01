@@ -58,7 +58,6 @@ class SessionDelegate: NSObject, WCSessionDelegate {
     }
     
     public func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
-      NSLog("WATCHOS RECEIVED APP CONTEXT")
       let defaults = UserDefaults.init()
       if let strength = applicationContext["opponentStrong"] as? Bool {
         defaults.set(strength, forKey: "opponentStrong")
@@ -67,23 +66,18 @@ class SessionDelegate: NSObject, WCSessionDelegate {
     
       if let playerWinCount = applicationContext["playerWinCount"] as? Int {
         defaults.set(playerWinCount, forKey: "playerWinCount")
-        NSLog("WATCHOS: Setting defaults for playerWinCount \(playerWinCount)")
       }
       if let watchWinCount = applicationContext["watchWinCount"] as? Int {
         defaults.set(watchWinCount, forKey: "watchWinCount")
-        NSLog("WATCHOS: Setting defaults for watchWinCount \(watchWinCount)")
       }
       if let drawCount = applicationContext["drawCount"] as? Int {
        defaults.set(drawCount, forKey: "drawCount")
-    NSLog("WATCHOS: Setting defaults for drawCount \(drawCount)")
-
       }
     
     }
     #endif
     
     
-
  
 }
 

@@ -9,19 +9,21 @@
 /* Begin PBXBuildFile section */
 		5B0D67391F93C83A0085EB11 /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0D67381F93C83A0085EB11 /* SessionDelegate.swift */; };
 		5B0D673A1F9D2B950085EB11 /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0D67381F93C83A0085EB11 /* SessionDelegate.swift */; };
+		5B54AB1D210E376E00673948 /* SimpleMindRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B54AB1C210E376E00673948 /* SimpleMindRowController.swift */; };
 		5B61C5951F3E33A4000CB514 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B61C5941F3E33A4000CB514 /* AppDelegate.swift */; };
 		5B61C5971F3E33A4000CB514 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B61C5961F3E33A4000CB514 /* ViewController.swift */; };
 		5B61C59A1F3E33A4000CB514 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B61C5981F3E33A4000CB514 /* Main.storyboard */; };
 		5B61C59C1F3E33A4000CB514 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B61C59B1F3E33A4000CB514 /* Assets.xcassets */; };
 		5B61C59F1F3E33A4000CB514 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B61C59D1F3E33A4000CB514 /* LaunchScreen.storyboard */; };
 		5B61C5A41F3E33A4000CB514 /* TicTacToe WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 5B61C5A31F3E33A4000CB514 /* TicTacToe WatchKit App.app */; };
-		5B61C5AA1F3E33A4000CB514 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B61C5A81F3E33A4000CB514 /* Interface.storyboard */; };
 		5B61C5AC1F3E33A4000CB514 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B61C5AB1F3E33A4000CB514 /* Assets.xcassets */; };
 		5B61C5B31F3E33A4000CB514 /* TicTacToe WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5B61C5B21F3E33A4000CB514 /* TicTacToe WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5B61C5BA1F3E33A4000CB514 /* TicTacToeInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B61C5B91F3E33A4000CB514 /* TicTacToeInterfaceController.swift */; };
 		5B61C5BC1F3E33A4000CB514 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B61C5BB1F3E33A4000CB514 /* ExtensionDelegate.swift */; };
 		5B61C5BE1F3E33A4000CB514 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B61C5BD1F3E33A4000CB514 /* NotificationController.swift */; };
 		5B61C5C01F3E33A4000CB514 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B61C5BF1F3E33A4000CB514 /* Assets.xcassets */; };
+		5B9C8FEA211359F300423B46 /* SimpleMindInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B54AB1A210E2E4500673948 /* SimpleMindInterfaceController.swift */; };
+		5B9C8FEB21135B1600423B46 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B61C5A81F3E33A4000CB514 /* Interface.storyboard */; };
 		5BE042211F44BF7B006A4263 /* TicTacToeLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE042201F44BF7B006A4263 /* TicTacToeLogic.swift */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +71,8 @@
 
 /* Begin PBXFileReference section */
 		5B0D67381F93C83A0085EB11 /* SessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDelegate.swift; sourceTree = "<group>"; };
+		5B54AB1A210E2E4500673948 /* SimpleMindInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleMindInterfaceController.swift; sourceTree = "<group>"; };
+		5B54AB1C210E376E00673948 /* SimpleMindRowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleMindRowController.swift; sourceTree = "<group>"; };
 		5B61C5911F3E33A4000CB514 /* TicTacToe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacToe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B61C5941F3E33A4000CB514 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B61C5961F3E33A4000CB514 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -162,6 +166,8 @@
 				5B61C5C11F3E33A4000CB514 /* Info.plist */,
 				5B61C5B71F3E33A4000CB514 /* Supporting Files */,
 				5BE042201F44BF7B006A4263 /* TicTacToeLogic.swift */,
+				5B54AB1A210E2E4500673948 /* SimpleMindInterfaceController.swift */,
+				5B54AB1C210E376E00673948 /* SimpleMindRowController.swift */,
 			);
 			path = "TicTacToe WatchKit Extension";
 			sourceTree = "<group>";
@@ -241,7 +247,7 @@
 					b12,
 				);
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = akendoo;
 				TargetAttributes = {
 					5B61C5901F3E33A4000CB514 = {
@@ -298,8 +304,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B9C8FEB21135B1600423B46 /* Interface.storyboard in Resources */,
 				5B61C5AC1F3E33A4000CB514 /* Assets.xcassets in Resources */,
-				5B61C5AA1F3E33A4000CB514 /* Interface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,6 +337,8 @@
 				5B61C5BE1F3E33A4000CB514 /* NotificationController.swift in Sources */,
 				5B0D673A1F9D2B950085EB11 /* SessionDelegate.swift in Sources */,
 				5BE042211F44BF7B006A4263 /* TicTacToeLogic.swift in Sources */,
+				5B9C8FEA211359F300423B46 /* SimpleMindInterfaceController.swift in Sources */,
+				5B54AB1D210E376E00673948 /* SimpleMindRowController.swift in Sources */,
 				5B61C5BC1F3E33A4000CB514 /* ExtensionDelegate.swift in Sources */,
 				5B61C5BA1F3E33A4000CB514 /* TicTacToeInterfaceController.swift in Sources */,
 			);
@@ -393,6 +401,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -400,6 +409,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -451,6 +461,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -458,6 +469,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;

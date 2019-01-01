@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14113" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14460.31" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
     <device id="watch38" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="watchOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14033"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14460.16"/>
     </dependencies>
     <scenes>
-        <!--Tic Tac Toe Interface Controller-->
+        <!--Tic Tac Toe-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="TicTacToeInterfaceController" customModule="TicTacToe_WatchKit_Extension">
+                <controller identifier="TicTacToeController" title="Tic Tac Toe" id="AgC-eL-Hgc" customClass="TicTacToeInterfaceController" customModule="TicTacToe_WatchKit_App" customModuleProvider="target">
                     <items>
                         <group width="1" alignment="center" id="08L-cs-0fn">
                             <items>
@@ -125,7 +125,7 @@
                                 </group>
                             </items>
                         </group>
-                        <button width="131" height="24" alignment="left" title="Start" id="C7v-kN-VT2">
+                        <button width="1" height="20" alignment="left" title="Start" id="C7v-kN-VT2">
                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <color key="backgroundColor" red="0.22362011400713844" green="0.64395365176213493" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
@@ -144,6 +144,7 @@
                         <outlet property="b21" destination="FCp-UV-zZa" id="cAY-FO-fPL"/>
                         <outlet property="b22" destination="xXv-0R-FZy" id="AOQ-Zd-VzD"/>
                         <outlet property="startButton" destination="C7v-kN-VT2" id="Idw-7u-P1D"/>
+                        <segue destination="cxB-Fc-EEI" kind="relationship" relationship="nextPage" id="vZc-AW-I0b"/>
                     </connections>
                 </controller>
             </objects>
@@ -172,12 +173,106 @@
             </objects>
             <point key="canvasLocation" x="468" y="643"/>
         </scene>
-        <!--Interface Controller-->
+        <!--Simple Mind-->
         <scene sceneID="QbJ-9G-jqb">
             <objects>
-                <controller id="cxB-Fc-EEI"/>
+                <controller identifier="SimpleMindInterfaceController" title="Simple Mind" id="cxB-Fc-EEI" customClass="SimpleMindInterfaceController" customModule="TicTacToe_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <table alignment="left" id="YdJ-24-lfl">
+                            <items>
+                                <tableRow identifier="GameEntryRow" id="LiR-qe-gZx" customClass="SimpleMindRowController" customModule="TicTacToe_WatchKit_App" customModuleProvider="target">
+                                    <group key="rootItem" width="1" height="65" alignment="left" id="Pes-ua-HKc">
+                                        <items>
+                                            <group width="1" height="1" alignment="left" layout="vertical" id="y5F-zx-Gw8">
+                                                <items>
+                                                    <group width="1" height="37" alignment="left" id="A0o-WE-3od">
+                                                        <items>
+                                                            <picker width="0.25" height="1" alignment="left" focusStyle="stack" id="eG3-KO-4zf" userLabel="Colour1">
+                                                                <connections>
+                                                                    <action selector="colour1PickerDidChangeWithSelectedIndex:" destination="LiR-qe-gZx" id="Wnm-Hw-V5E"/>
+                                                                </connections>
+                                                            </picker>
+                                                            <picker width="0.25" height="1" alignment="left" focusStyle="stack" id="Khv-Lq-BZU" userLabel="Colour2">
+                                                                <connections>
+                                                                    <action selector="colour2PickerDidChangeWithSelectedIndex:" destination="LiR-qe-gZx" id="rvK-Ne-dzX"/>
+                                                                </connections>
+                                                            </picker>
+                                                            <picker width="0.25" height="1" alignment="left" focusStyle="stack" id="nwj-lC-y79" userLabel="Colour3">
+                                                                <connections>
+                                                                    <action selector="colour3PickerDidChangeWithSelectedIndex:" destination="LiR-qe-gZx" id="KhI-UL-9d2"/>
+                                                                </connections>
+                                                            </picker>
+                                                            <picker width="0.25" height="1" alignment="left" focusStyle="stack" id="eR1-S5-zz8" userLabel="Colour4">
+                                                                <connections>
+                                                                    <action selector="colour4PickerDidChangeWithSelectedIndex:" destination="LiR-qe-gZx" id="JFM-rK-bz6"/>
+                                                                </connections>
+                                                            </picker>
+                                                        </items>
+                                                    </group>
+                                                    <group width="1" alignment="left" id="V2h-tf-xmn">
+                                                        <items>
+                                                            <label alignment="left" text="o" id="Ysq-6y-c9Y" userLabel="Result1">
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </label>
+                                                            <label alignment="left" text="o" id="H5Z-Na-9Q1" userLabel="Result2"/>
+                                                            <label alignment="left" text="o" id="HMs-b1-D75" userLabel="Result3"/>
+                                                            <label alignment="left" text="o" id="Wh3-ii-wg4" userLabel="Result4">
+                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </label>
+                                                            <button height="1" alignment="right" title="✅" id="Vmt-0t-UdM">
+                                                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <fontDescription key="font" type="system" pointSize="14"/>
+                                                                <connections>
+                                                                    <action selector="okPressed" destination="LiR-qe-gZx" id="rZw-5M-14D"/>
+                                                                </connections>
+                                                            </button>
+                                                        </items>
+                                                    </group>
+                                                </items>
+                                            </group>
+                                        </items>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </group>
+                                    <connections>
+                                        <outlet property="colour1" destination="eG3-KO-4zf" id="Xfw-yE-5eW"/>
+                                        <outlet property="colour2" destination="Khv-Lq-BZU" id="Ddi-Jb-0aR"/>
+                                        <outlet property="colour3" destination="nwj-lC-y79" id="i6V-mV-w6g"/>
+                                        <outlet property="colour4" destination="eR1-S5-zz8" id="8EA-MC-auO"/>
+                                        <outlet property="okButton" destination="Vmt-0t-UdM" id="atc-0D-r3e"/>
+                                        <outlet property="result1" destination="Ysq-6y-c9Y" id="A9a-bA-HLt"/>
+                                        <outlet property="result2" destination="H5Z-Na-9Q1" id="kQz-Sn-i7k"/>
+                                        <outlet property="result3" destination="HMs-b1-D75" id="nha-Mg-Nzw"/>
+                                        <outlet property="result4" destination="Wh3-ii-wg4" id="HyC-Wy-HOP"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                        <group width="1" height="41" alignment="left" id="4jl-9g-7up">
+                            <items>
+                                <imageView width="30" height="30" alignment="center" image="greycircle" id="VKs-Uw-9pJ" userLabel="CodeImage1"/>
+                                <imageView width="30" height="30" alignment="center" image="greycircle" id="qJ4-Gn-Tyy" userLabel="CodeImage2"/>
+                                <imageView width="30" height="30" alignment="center" image="greycircle" id="VNn-Bz-yIk" userLabel="CodeImage3"/>
+                                <imageView width="30" height="30" alignment="center" image="greycircle" id="rNz-on-1p4" userLabel="CodeImage4"/>
+                            </items>
+                        </group>
+                    </items>
+                    <menu key="menu" id="n9a-KK-BqG">
+                        <items>
+                            <menuItem title="Restart Game." icon="play" id="jkg-gm-yWW" userLabel="Restart Game."/>
+                        </items>
+                    </menu>
+                    <connections>
+                        <outlet property="codeImage1" destination="VKs-Uw-9pJ" id="qrf-SV-jp5"/>
+                        <outlet property="codeImage2" destination="qJ4-Gn-Tyy" id="WDy-XN-lAO"/>
+                        <outlet property="codeImage3" destination="VNn-Bz-yIk" id="EpT-R5-IIv"/>
+                        <outlet property="codeImage4" destination="rNz-on-1p4" id="SGW-RU-QNS"/>
+                        <outlet property="gameEntryTable" destination="YdJ-24-lfl" id="O12-2i-odl"/>
+                    </connections>
+                </controller>
             </objects>
-            <point key="canvasLocation" x="818" y="355"/>
+            <point key="canvasLocation" x="521" y="329"/>
         </scene>
     </scenes>
+    <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
 </document>

@@ -204,6 +204,20 @@ class TicTacToeInterfaceController: WKInterfaceController {
          }
     }
     
+    func queryPhoneForOpponentStrongFlag() {
+        WCSession.default.sendMessage(["request" : "getOpponentStrongFlag"],
+                                      replyHandler: {(response: [String : Any]) -> Void in // ex. ["opponentStrong": true|false]
+                                        self.defaults.set(response["opponentStrong"], forKey: "opponentStrong")
+                                        //let res = self.defaults.bool(forKey: "opponentStrong")
+                                        //NSLog("WATCHOS - OPPONENTSTRONG FLAG :: \(res)")
+        },
+                                      errorHandler: {(error: Error) -> Void in
+                                        self.defaults.set(false, forKey: "opponentStrong")
+                                        //NSLog("WATCHOS - OPPONENTSTRONG FLAG :: \(error)")
+        })
+    }
+    
+    
     /* APP LIFECYCLE
      0) Initial event after installation: AWAKEWITHCONTEXT
      1) Event prior to opening the app: WILLACTIVATE
@@ -225,7 +239,6 @@ class TicTacToeInterfaceController: WKInterfaceController {
     */
     
     @objc func applicationContextChangedOnWatch() {
-        //NSLog("APPLICATIONCONTEXTCHANGEDONWATCH")
         OperationQueue.main.addOperation( {
             if self.isWatchUIActive {
                 self.recolorButtonsUponOpponentStrengthChange() 
@@ -235,8 +248,7 @@ class TicTacToeInterfaceController: WKInterfaceController {
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
-        //NSLog("AWAKEWITHCONTEXT")
-        
+
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(applicationContextChangedOnWatch),
                                                name: Notification.Name("ApplicationContextChangedOnWatch"),
@@ -254,25 +266,15 @@ class TicTacToeInterfaceController: WKInterfaceController {
         catch let error {
             NSLog("Error updating scores on iPhone: \(error).")
         }
-        
-         /*
-         WCSession.default.sendMessage(["request" : "getOpponentStrongFlag"],
-         replyHandler: {(response: [String : Any]) -> Void in // layout  ["opponentStrong": true|false]
-            self.defaults.set(response["opponentStrong"], forKey: "opponentStrong")
-            let res = self.defaults.bool(forKey: "opponentStrong")
-            NSLog("AWAKE - OPPONENTSTRONG FLAG :: \(res)")
-         },
-         errorHandler: {(error: Error) -> Void in
-            self.defaults.set(false, forKey: "opponentStrong")
-            NSLog("AWAKE - OPPONENTSTRONG FLAG :: \(error)")
-         })
-         */
     }
+    
+
     
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
-        // NSLog("WILLACTIVATE")
         super.willActivate()
+        queryPhoneForOpponentStrongFlag()
+    
         let opponentStrong = defaults.bool(forKey:"opponentStrong")
         
         buttonGrid = [[b00, b01, b02],
@@ -298,7 +300,6 @@ class TicTacToeInterfaceController: WKInterfaceController {
     
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
-        //NSLog("DIDDEACTIVATE")
         super.didDeactivate()
         self.isWatchUIActive = false
     }

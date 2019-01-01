@@ -41,18 +41,20 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         opponentStrongSwitch.addTarget(self, action: #selector(switchChanged), for: UIControlEvents.valueChanged)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(applicationContextChanged),
+                                               name: Notification.Name("ApplicationContextChanged"),
+                                               object: nil)
         opponentStrongSwitch.setOn(true, animated: true)
         setDefaultsUpdateApplicationContext(val: true)
         
         playerWinCount.text = String(defaults.integer(forKey: "playerWinCount"))
         watchWinCount.text = String(defaults.integer(forKey: "watchWinCount"))
         drawCount.text = String(defaults.integer(forKey: "drawCount"))
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(applicationContextChanged),
-                                               name: Notification.Name("ApplicationContextChanged"),
-                                               object: nil)
-        
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
